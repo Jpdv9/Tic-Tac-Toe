@@ -5,6 +5,8 @@
 package Vistas;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -99,10 +101,16 @@ public class VistaConfiguracion extends JFrame{
         jpContenido.add(btnPartida4);
         jpContenido.add(btnSiguiente);
         jpContenido.add(btnAtras);
-
-
-
         
         
+        ActionListener siguiente = new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                VistaJugador1 vistajugador1 = new VistaJugador1();
+                dispose();
+            }
+        };
+        
+        btnSiguiente.addActionListener(siguiente);
     }
 }
