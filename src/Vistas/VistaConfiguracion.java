@@ -4,9 +4,15 @@
  */
 package Vistas;
 
+import Logica.LogicaJuego;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -83,9 +89,11 @@ public class VistaConfiguracion extends JFrame{
         
         btnSiguiente = new JButton("Siguiente");
         btnSiguiente.setBounds(550,405,125,50);
+        btnSiguiente.setEnabled(false);
         
         btnAtras = new JButton("Atras");
         btnAtras.setBounds(5,405,125,50);
+        
         
         jpContenido.setSize(700,500);
         jpContenido.setLayout(null);
@@ -106,11 +114,121 @@ public class VistaConfiguracion extends JFrame{
         ActionListener siguiente = new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
+                
                 VistaJugador1 vistajugador1 = new VistaJugador1();
                 dispose();
             }
         };
         
         btnSiguiente.addActionListener(siguiente);
+        
+        btn1vs1.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent e){
+                LogicaJuego.jugadores = 1;
+                
+                btn1vs1.setBorder(BorderFactory.createLoweredBevelBorder());
+                btn1vs1.setBackground(Color.LIGHT_GRAY);
+                btn1vscpu.setBorder(BorderFactory.createLoweredBevelBorder());
+                btn1vscpu.setBackground(null);
+                if(LogicaJuego.numeroPartidas > 0){
+                    btnSiguiente.setEnabled(true);
+                } 
+                //btnSiguiente.setEnabled(true);
+            }  
+        });
+        
+        btn1vscpu.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent e){
+                LogicaJuego.jugadores = 2;
+                
+                btn1vscpu.setBorder(BorderFactory.createLoweredBevelBorder());
+                btn1vscpu.setBackground(Color.LIGHT_GRAY);
+                btn1vs1.setBorder(BorderFactory.createLoweredBevelBorder());
+                btn1vs1.setBackground(null);
+                
+                if(LogicaJuego.numeroPartidas > 0){
+                    btnSiguiente.setEnabled(true);
+                } 
+            }  
+        });
+        
+        btnPartida1.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent e){
+                LogicaJuego.numeroPartidas = 1;
+                
+                btnPartida1.setBorder(BorderFactory.createLoweredBevelBorder());
+                btnPartida1.setBackground(Color.LIGHT_GRAY);
+                btnPartida2.setBorder(BorderFactory.createLoweredBevelBorder());
+                btnPartida2.setBackground(null);
+                btnPartida3.setBorder(BorderFactory.createLoweredBevelBorder());
+                btnPartida3.setBackground(null);
+                btnPartida4.setBorder(BorderFactory.createLoweredBevelBorder());
+                btnPartida4.setBackground(null);
+                
+                if(LogicaJuego.jugadores > 0){
+                    btnSiguiente.setEnabled(true);
+                } 
+            }  
+        });
+        
+        btnPartida2.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent e){
+                LogicaJuego.numeroPartidas = 2;
+                
+                btnPartida2.setBorder(BorderFactory.createLoweredBevelBorder());
+                btnPartida2.setBackground(Color.LIGHT_GRAY);
+                btnPartida1.setBorder(BorderFactory.createLoweredBevelBorder());
+                btnPartida1.setBackground(null);
+                btnPartida3.setBorder(BorderFactory.createLoweredBevelBorder());
+                btnPartida3.setBackground(null);
+                btnPartida4.setBorder(BorderFactory.createLoweredBevelBorder());
+                btnPartida4.setBackground(null);
+                
+                if(LogicaJuego.jugadores > 0){
+                    btnSiguiente.setEnabled(true);
+                } 
+            }  
+        });
+        
+        btnPartida3.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent e){
+                LogicaJuego.numeroPartidas = 3;
+                
+                btnPartida3.setBorder(BorderFactory.createLoweredBevelBorder());
+                btnPartida3.setBackground(Color.LIGHT_GRAY);
+                btnPartida1.setBorder(BorderFactory.createLoweredBevelBorder());
+                btnPartida1.setBackground(null);
+                btnPartida2.setBorder(BorderFactory.createLoweredBevelBorder());
+                btnPartida2.setBackground(null);
+                btnPartida4.setBorder(BorderFactory.createLoweredBevelBorder());
+                btnPartida4.setBackground(null);
+                
+                if(LogicaJuego.jugadores > 0){
+                    btnSiguiente.setEnabled(true);
+                } 
+            }  
+        });
+        
+        btnPartida4.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent e){
+                LogicaJuego.numeroPartidas = 4;
+                
+                btnPartida4.setBorder(BorderFactory.createLoweredBevelBorder());
+                btnPartida4.setBackground(Color.LIGHT_GRAY);
+                btnPartida1.setBorder(BorderFactory.createLoweredBevelBorder());
+                btnPartida1.setBackground(null);
+                btnPartida2.setBorder(BorderFactory.createLoweredBevelBorder());
+                btnPartida2.setBackground(null);
+                btnPartida3.setBorder(BorderFactory.createLoweredBevelBorder());
+                btnPartida3.setBackground(null);
+                
+                if(LogicaJuego.jugadores > 0){
+                    btnSiguiente.setEnabled(true);
+                } 
+            }  
+        }); 
     }
+    
+        
+    
 }
