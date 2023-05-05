@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -55,11 +54,11 @@ public class VistaConfiguracion extends JFrame{
         add(jpContenido);
         
         lbl1vs1 = new JLabel("1 vs 1");
-        lbl1vs1.setBounds(175,15,100,100);
+        lbl1vs1.setBounds(465,15,100,100);
         lbl1vs1.setFont(new Font ("Agency FB", Font.BOLD, 20));
         
         lbl1vscpu = new JLabel("1 vs CPU");
-        lbl1vscpu.setBounds(450,15,100,100);
+        lbl1vscpu.setBounds(165,15,100,100);
         lbl1vscpu.setFont(new Font ("Agency FB", Font.BOLD, 20));
         
         lblNumeroPartidas = new JLabel("Numero De Partidas");
@@ -124,22 +123,22 @@ public class VistaConfiguracion extends JFrame{
         
         btn1vs1.addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent e){
-                LogicaJuego.jugadores = 1;
+                LogicaJuego.jugadores = 2;
                 
                 btn1vs1.setBorder(BorderFactory.createLoweredBevelBorder());
                 btn1vs1.setBackground(Color.LIGHT_GRAY);
                 btn1vscpu.setBorder(BorderFactory.createLoweredBevelBorder());
                 btn1vscpu.setBackground(null);
+                
                 if(LogicaJuego.numeroPartidas > 0){
                     btnSiguiente.setEnabled(true);
                 } 
-                //btnSiguiente.setEnabled(true);
             }  
         });
         
         btn1vscpu.addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent e){
-                LogicaJuego.jugadores = 2;
+                LogicaJuego.jugadores = 1;
                 
                 btn1vscpu.setBorder(BorderFactory.createLoweredBevelBorder());
                 btn1vscpu.setBackground(Color.LIGHT_GRAY);
@@ -227,8 +226,5 @@ public class VistaConfiguracion extends JFrame{
                 } 
             }  
         }); 
-    }
-    
-        
-    
+    }  
 }

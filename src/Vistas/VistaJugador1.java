@@ -4,11 +4,10 @@
  */
 package Vistas;
 
+import Logica.LogicaJuego;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -58,16 +57,22 @@ public class VistaJugador1 extends JFrame{
         jpContenido.add(txtDigitarNombre);
         jpContenido.add(btnSiguiente);
         
-        /*ActionListener siguiente = new ActionListener(){
+        ActionListener siguiente = new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(LogicaJuego.jugadores == 2){
+                    //Crear la ventana del jugador 2
+                    dispose();
+                    System.out.println(LogicaJuego.jugadores);
+                }else{
+                    VistaJuego vistajuego = new VistaJuego();
+                    dispose();
+                    System.out.println(LogicaJuego.jugadores);
+                }
                 
-                dispose();
             }
-        };
-        
-        btnSiguiente.addActionListener(siguiente);*/
-        
+        };        
+        btnSiguiente.addActionListener(siguiente);
     }
     
 }
