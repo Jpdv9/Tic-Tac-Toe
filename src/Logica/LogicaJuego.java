@@ -25,9 +25,7 @@ public class LogicaJuego {
     public LogicaJuego(){
         this.turno = 0;
         this.ganar = false;
-        
-        
-        
+ 
     }
     
     
@@ -37,5 +35,6 @@ public class LogicaJuego {
         VistaJuego vistajuego = new VistaJuego();
 
     }
+
     
 }

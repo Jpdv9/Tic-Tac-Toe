@@ -6,11 +6,15 @@ package Vistas;
 
 import Logica.LogicaJuego;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -37,11 +41,7 @@ public class VistaJuego extends JFrame{
     
     
     public VistaJuego(){
-        iniciarComponentes();
-
-        
-        
-        
+        iniciarComponentes();        
     }
     
     private void iniciarComponentes(){
@@ -56,6 +56,8 @@ public class VistaJuego extends JFrame{
         jpContenido = new JPanel();
         jpContenido.setLayout(new BoxLayout(jpContenido, BoxLayout.Y_AXIS));
         
+        
+        
         //Colocar un espacio vacio arriba
         JPanel emptyBoxTop = new JPanel();
         emptyBoxTop.setPreferredSize(new Dimension(0, 100));
@@ -66,17 +68,23 @@ public class VistaJuego extends JFrame{
         botones = new JButton[3][3];
         for (int i = 0; i < botones.length; i++) {
             for (int j = 0; j < botones[0].length; j++) {
-                System.out.println("Error 1");
                 botones[i][j] = new JButton();
                 botones[i][j].setHorizontalAlignment(SwingConstants.CENTER);
                 botones[i][j].setVerticalAlignment(SwingConstants.CENTER);
                 botones[i][j].setPreferredSize(new Dimension(150,200));
-                botones[i][j].addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
+                
+                botones[i][j].addMouseListener(new MouseAdapter(){
+                    public void mousePressed(MouseEvent e){
                         JButton botonPresionado = (JButton) e.getSource();
-                        botonPresionado.setEnabled(false);
-                        etiqueta = new JLabel("X");
-                        botonPresionado.add(etiqueta);
+                        if(e.getButton() == MouseEvent.BUTTON1){
+                            botonPresionado.setEnabled(false);
+                            botonPresionado.setText("X");
+                            
+                        }
+                        if(e.getButton() == MouseEvent.BUTTON3){
+                            botonPresionado.setEnabled(false);
+                            botonPresionado.setText("O");
+                        }
                     }
                 });
             }
@@ -94,8 +102,7 @@ public class VistaJuego extends JFrame{
         Border borde = BorderFactory.createEmptyBorder(150,150, 150, 150);
         jpContenido.setBorder(borde);
         
-        add(jpContenido);  
-       
+        add(jpContenido);
     }
     
     public void mostrarBotones(JButton[][] botones, int filas, int columnas){
@@ -108,5 +115,7 @@ public class VistaJuego extends JFrame{
         }
         
         jpContenido.add(panel, BorderLayout.CENTER); 
+  
     }
+    
 }
