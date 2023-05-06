@@ -5,6 +5,7 @@
 package Vistas;
 
 import Logica.LogicaJuego;
+import Logica.LogicaJuego;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
