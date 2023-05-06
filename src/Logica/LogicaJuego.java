@@ -16,24 +16,20 @@ public class LogicaJuego {
     public static int jugadores = 0;
     public static int numeroPartidas = 0;
     public static int partidasSelecionadas = numeroPartidas;
-    public static boolean ganar;
-    public static int turno;
+    public static boolean ganar = false;
+    public static int turno = 0;
     public String[][] estadoBotones;
     public JButton[][] botones;
     
     
-    public LogicaJuego(){
-        this.turno = 0;
-        this.ganar = false;
- 
-    }
-    
     
     public void triqui(){
-        //estadoBotones = new String[this.botones.length][this.botones[0].length];
-        botones = new JButton[3][3];
         VistaJuego vistajuego = new VistaJuego();
 
+    }
+    
+    public void turnos(){
+        
     }
 
     

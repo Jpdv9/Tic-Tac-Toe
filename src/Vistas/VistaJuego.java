@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -79,11 +80,13 @@ public class VistaJuego extends JFrame{
                         if(e.getButton() == MouseEvent.BUTTON1){
                             botonPresionado.setEnabled(false);
                             botonPresionado.setText("X");
+                            botonPresionado.setFont(new Font ("Agency FB", Font.BOLD, 35));
                             
                         }
                         if(e.getButton() == MouseEvent.BUTTON3){
                             botonPresionado.setEnabled(false);
                             botonPresionado.setText("O");
+                            botonPresionado.setFont(new Font ("Agency FB", Font.BOLD, 35));
                         }
                     }
                 });

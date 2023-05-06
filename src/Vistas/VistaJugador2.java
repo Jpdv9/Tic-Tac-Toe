@@ -5,7 +5,6 @@
 package Vistas;
 
 import Logica.LogicaJuego;
-import Logica.LogicaJuego;
 import Logica.LogicaJugador;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -21,14 +20,14 @@ import javax.swing.JTextField;
  *
  * @author jeanp
  */
-public class VistaJugador1 extends JFrame{
+public class VistaJugador2 extends JFrame{
     
     private JLabel lblNombreJugador;
     private JTextField txtDigitarNombre;
     private JButton btnSiguiente;
     private JPanel jpContenido;
     
-    public VistaJugador1(){
+    public VistaJugador2(){
         iniciarComponentes();
     }
     
@@ -41,10 +40,13 @@ public class VistaJugador1 extends JFrame{
         setLocationRelativeTo(null);
         setVisible(true);
         
+
+        
         jpContenido = new JPanel();
         add(jpContenido);
+
         
-        lblNombreJugador = new JLabel("Nombre Jugador 1");
+        lblNombreJugador = new JLabel("Nombre Jugador 2");
         lblNombreJugador.setBounds(183, 50, 150, 150);
         lblNombreJugador.setFont(new Font ("Agency FB", Font.BOLD, 25));
         
@@ -62,33 +64,22 @@ public class VistaJugador1 extends JFrame{
         
         ActionListener siguiente = new ActionListener(){
             @Override
-            public void actionPerformed(ActionEvent e) {
-                
-                String nombre1 = txtDigitarNombre.getText();
-                if(!nombre1.trim().isEmpty() || nombre1.trim().length() > 0){
-                    if(LogicaJuego.jugadores == 2){
-                        LogicaJugador jugador = new LogicaJugador(nombre1);
-                        VistaJugador2 vistajugador2 = new VistaJugador2();
-                        dispose();
-                    }else{
-                        LogicaJugador jugador = new LogicaJugador(nombre1);
-                        VistaJuego vistajuego = new VistaJuego();
-                        dispose();
-                    }
-                    
-                    
-                    
+            public void actionPerformed(ActionEvent e) {             
+                String nombre2 = txtDigitarNombre.getText();
+                if(!nombre2.trim().isEmpty() || nombre2.trim().length() > 0){
+   
+                    LogicaJugador jugador = new LogicaJugador(nombre2);
+                    VistaJuego vistajuego = new VistaJuego(); 
+                    dispose(); 
                 }
                 else{
                 JOptionPane.showMessageDialog(null,"Por favor ingrese su nombre", 
                         "Advertencia", JOptionPane.ERROR_MESSAGE);
                     txtDigitarNombre.requestFocusInWindow();
                 }
-                
-                
             }
         };        
         btnSiguiente.addActionListener(siguiente);
     }
-    
+
 }
