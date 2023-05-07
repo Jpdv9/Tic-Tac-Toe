@@ -13,7 +13,7 @@ public class LogicaJugador {
     private String nombre;
     
     public LogicaJugador(){
-        nombre = "Jugador 1";
+        nombre = "NPC";
     }
     
     public LogicaJugador(String nombre){

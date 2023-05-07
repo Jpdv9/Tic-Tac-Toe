@@ -5,7 +5,6 @@
 package Vistas;
 
 import Logica.LogicaJuego;
-import Logica.LogicaJuego;
 import Logica.LogicaJugador;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -27,6 +26,8 @@ public class VistaJugador1 extends JFrame{
     private JTextField txtDigitarNombre;
     private JButton btnSiguiente;
     private JPanel jpContenido;
+    private LogicaJugador jugador2;
+    
     
     public VistaJugador1(){
         iniciarComponentes();
@@ -67,25 +68,22 @@ public class VistaJugador1 extends JFrame{
                 String nombre1 = txtDigitarNombre.getText();
                 if(!nombre1.trim().isEmpty() || nombre1.trim().length() > 0){
                     if(LogicaJuego.jugadores == 2){
-                        LogicaJugador jugador = new LogicaJugador(nombre1);
-                        VistaJugador2 vistajugador2 = new VistaJugador2();
+                        LogicaJugador jugador1 = new LogicaJugador(nombre1);
+                        VistaJugador2 vistajugador2 = new VistaJugador2(jugador1);
                         dispose();
                     }else{
-                        LogicaJugador jugador = new LogicaJugador(nombre1);
-                        VistaJuego vistajuego = new VistaJuego();
+                        LogicaJugador jugador1 = new LogicaJugador(nombre1);
+                        LogicaJugador jugador2 = new LogicaJugador();
+                        
+                        VistaJuego vistajuego = new VistaJuego(jugador1, jugador2);
                         dispose();
                     }
-                    
-                    
-                    
                 }
                 else{
                 JOptionPane.showMessageDialog(null,"Por favor ingrese su nombre", 
                         "Advertencia", JOptionPane.ERROR_MESSAGE);
                     txtDigitarNombre.requestFocusInWindow();
                 }
-                
-                
             }
         };        
         btnSiguiente.addActionListener(siguiente);

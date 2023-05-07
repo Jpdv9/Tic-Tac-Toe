@@ -26,8 +26,13 @@ public class VistaJugador2 extends JFrame{
     private JTextField txtDigitarNombre;
     private JButton btnSiguiente;
     private JPanel jpContenido;
+    private LogicaJugador jugador1;
+
     
-    public VistaJugador2(){
+    
+    
+    public VistaJugador2(LogicaJugador jugador1){
+        this.jugador1 = jugador1;
         iniciarComponentes();
     }
     
@@ -68,8 +73,8 @@ public class VistaJugador2 extends JFrame{
                 String nombre2 = txtDigitarNombre.getText();
                 if(!nombre2.trim().isEmpty() || nombre2.trim().length() > 0){
    
-                    LogicaJugador jugador = new LogicaJugador(nombre2);
-                    VistaJuego vistajuego = new VistaJuego(); 
+                    LogicaJugador jugador2 = new LogicaJugador(nombre2);
+                    VistaJuego vistajuego = new VistaJuego(jugador1, jugador2); 
                     dispose(); 
                 }
                 else{
