@@ -4,7 +4,7 @@
  */
 package Vistas;
 
-import Logica.LogicaJuego;
+
 import Logica.LogicaJugador;
 import java.awt.Font;
 import java.awt.event.ActionEvent;

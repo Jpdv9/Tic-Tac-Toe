@@ -18,6 +18,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
@@ -39,11 +40,14 @@ public class VistaJuego extends JFrame{
     private JPanel jpContenido;
     private LogicaJugador jugador1;
     private LogicaJugador jugador2;
+    private LogicaJuego logicaJuego;
     
     
     public VistaJuego(LogicaJugador jugador1, LogicaJugador jugador2){
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
+        this.logicaJuego = new LogicaJuego(botones);
+        
         iniciarComponentes();        
     }
     
@@ -88,7 +92,7 @@ public class VistaJuego extends JFrame{
         lblNombreJugador2.setForeground(Color.GRAY);
         lblNombreJugador2.setFont(new Font("arial", Font.BOLD, 18));
         
-        lblNumeroPartidas = new JLabel("Partida: ");
+        lblNumeroPartidas = new JLabel("Partida: " + LogicaJuego.numeroPartidas);
         lblNumeroPartidas.setBounds(250,0,100,100);
         lblNumeroPartidas.setFont(new Font("Agency FB", Font.BOLD, 20));
         
@@ -104,7 +108,6 @@ public class VistaJuego extends JFrame{
         jpContenido.add(jpLabels);
         
         jpContenido.setLayout(new BoxLayout(jpContenido, BoxLayout.Y_AXIS));
-
         /*
         * Configuracion de la matriz en la vista y funcionalidades
         */
@@ -122,16 +125,36 @@ public class VistaJuego extends JFrame{
                     public void mousePressed(MouseEvent e){
                         JButton botonPresionado = (JButton) e.getSource();
                         if(e.getButton() == MouseEvent.BUTTON1 && LogicaJuego.turno == 1){
+                            
                             botonPresionado.setEnabled(false);
                             botonPresionado.setText("X");
                             botonPresionado.setFont(new Font ("Agency FB", Font.BOLD, 35));
-                            LogicaJuego.turno++; 
+                            if(logicaJuego.verificar(botones) == true){
+                                JOptionPane.showMessageDialog(null, "El jugador " + jugador1.getNombre() +" ha ganado",
+                                        "Informacion", JOptionPane.INFORMATION_MESSAGE);
+                                logicaJuego.reseteoTriqui(botones);
+                                LogicaJuego.numeroPartidas--;
+                                lblNumeroPartidas.setText("Partida: " + LogicaJuego.numeroPartidas);
+                                
+                            }else{
+                                LogicaJuego.turno++; 
+                            }
+                            
                         }
                         if(e.getButton() == MouseEvent.BUTTON3 && LogicaJuego.turno == 2){
                             botonPresionado.setEnabled(false);
                             botonPresionado.setText("O");
                             botonPresionado.setFont(new Font ("Agency FB", Font.BOLD, 35));
-                            LogicaJuego.turno--;
+                            if(logicaJuego.verificar(botones) == true){
+                                JOptionPane.showMessageDialog(null, "El jugador " + jugador2.getNombre() +" ha ganado",
+                                        "Informacion", JOptionPane.INFORMATION_MESSAGE);
+                                logicaJuego.reseteoTriqui(botones);
+                                LogicaJuego.numeroPartidas--;
+                                lblNumeroPartidas.setText("Partida: " + LogicaJuego.numeroPartidas);
+                            }else{
+                                LogicaJuego.turno--;
+                            }
+                            
                         }
                     }
                 });
@@ -139,7 +162,6 @@ public class VistaJuego extends JFrame{
         }
         
         mostrarBotones(botones, 3, 3);
-        
         
         // Un border
         Border borde = BorderFactory.createEmptyBorder(0,100, 100, 100);
@@ -159,5 +181,4 @@ public class VistaJuego extends JFrame{
         
         jpContenido.add(panel, BorderLayout.CENTER); 
     }
-    
 }
