@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Vistas;
 
 import java.awt.Font;
@@ -45,17 +42,17 @@ public class VistaInicio extends JFrame{
         add(jpContenido);
         
         lblTitulo = new JLabel("Tic Tac Toe");
-        lblTitulo.setBounds(175,80,250,60);
-        lblTitulo.setFont(new Font ("Agency FB", Font.BOLD, 30));
+        lblTitulo.setBounds(155,80,250,60);
+        lblTitulo.setFont(new Font ("Comic Sans MS", Font.BOLD, 30));
         lblTitulo.setHorizontalAlignment(JLabel.LEFT);
         
         btnJugar = new JButton("Jugar");
         btnJugar.setBounds(175,180, 150,50);
-        btnJugar.setFont(new Font("Agency FB",Font.BOLD,21));
+            btnJugar.setFont(new Font("Comic Sans MS",Font.BOLD,21));
 
         btnInstrucciones = new JButton("Instrucciones");
-        btnInstrucciones.setBounds(175,250, 150,50);
-        btnInstrucciones.setFont(new Font("Agency FB",Font.BOLD,21));
+        btnInstrucciones.setBounds(150,250, 200,50);
+        btnInstrucciones.setFont(new Font("Comic Sans MS",Font.BOLD,21));
         
         jpContenido.setSize(550,475);
         jpContenido.setLayout(null);
