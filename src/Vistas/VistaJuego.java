@@ -5,12 +5,15 @@
 package Vistas;
 
 import Logica.LogicaJuego;
+import Logica.LogicaJuego.ManejadorEventoKey;
 import Logica.LogicaJugador;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
@@ -41,6 +44,7 @@ public class VistaJuego extends JFrame{
     private LogicaJugador jugador1;
     private LogicaJugador jugador2;
     private LogicaJuego logicaJuego;
+    private ManejadorEventoKey keyListener;
     
     
     public VistaJuego(LogicaJugador jugador1, LogicaJugador jugador2){
@@ -63,8 +67,11 @@ public class VistaJuego extends JFrame{
         jpContenido = new JPanel();
         
         JPanel jpLabels = new JPanel();
-
         
+        
+        /*
+        * Nombre de los jugadores
+        */
         
         lblJugador1 = new JLabel("JUGADOR 1:");
         lblJugador1.setBounds(0,0,100,100);
@@ -79,6 +86,8 @@ public class VistaJuego extends JFrame{
         lblNombreJugador1.setForeground(Color.GRAY);
         lblNombreJugador1.setFont(new Font("arial", Font.BOLD, 18));
         
+        
+        //Jugador 2
         lblJugador2 = new JLabel("JUGADOR 2:");
         lblJugador2.setBounds(490,0,100,100);
         lblJugador2.setFont(new Font("Agency FB", Font.BOLD, 18));
@@ -92,9 +101,22 @@ public class VistaJuego extends JFrame{
         lblNombreJugador2.setForeground(Color.GRAY);
         lblNombreJugador2.setFont(new Font("arial", Font.BOLD, 18));
         
+        
+        //Numero de partidas disponible
         lblNumeroPartidas = new JLabel("Partida: " + LogicaJuego.numeroPartidas);
         lblNumeroPartidas.setBounds(250,0,100,100);
         lblNumeroPartidas.setFont(new Font("Agency FB", Font.BOLD, 20));
+        
+        
+        // Partidas ganadas
+        lblPartidasGanadas1 = new JLabel("Ganadas: " + LogicaJuego.partidasGanadas1);
+        lblPartidasGanadas1.setBounds(0,70,100,100);
+        lblPartidasGanadas1.setFont(new Font("Agency FB", Font.BOLD, 20));
+        
+        lblPartidasGanadas2 = new JLabel("Ganadas: " + LogicaJuego.partidasGanadas2);
+        lblPartidasGanadas2.setBounds(500,70,100,100);
+        lblPartidasGanadas2.setFont(new Font("Agency FB", Font.BOLD, 20));
+        
         
         jpLabels.setLayout(null);
         jpLabels.setPreferredSize(new Dimension(500, 300));
@@ -105,9 +127,12 @@ public class VistaJuego extends JFrame{
         jpLabels.add(lblJugador2);
         jpLabels.add(lblNombreJugador2);
         jpLabels.add(lblNumeroPartidas);
+        jpLabels.add(lblPartidasGanadas1);
+        jpLabels.add(lblPartidasGanadas2);
         jpContenido.add(jpLabels);
         
         jpContenido.setLayout(new BoxLayout(jpContenido, BoxLayout.Y_AXIS));
+        
         /*
         * Configuracion de la matriz en la vista y funcionalidades
         */
@@ -120,44 +145,101 @@ public class VistaJuego extends JFrame{
                 botones[i][j].setHorizontalAlignment(SwingConstants.CENTER);
                 botones[i][j].setVerticalAlignment(SwingConstants.CENTER);
                 botones[i][j].setPreferredSize(new Dimension(100,200));
+                botones[i][j].addKeyListener(keyListener);
+                botones[i][j].setFocusable(true);
                 
                 botones[i][j].addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent e){
                         JButton botonPresionado = (JButton) e.getSource();
+                        
+                        // Jugador 1, el jugador utiliza el boton Izquiedo del mouse para jugar
                         if(e.getButton() == MouseEvent.BUTTON1 && LogicaJuego.turno == 1){
                             
                             botonPresionado.setEnabled(false);
                             botonPresionado.setText("X");
                             botonPresionado.setFont(new Font ("Agency FB", Font.BOLD, 35));
+                            
+                            //Verificar si gano, si no pasa el turno al segundo juagor
                             if(logicaJuego.verificar(botones) == true){
+                                
                                 JOptionPane.showMessageDialog(null, "El jugador " + jugador1.getNombre() +" ha ganado",
                                         "Informacion", JOptionPane.INFORMATION_MESSAGE);
                                 logicaJuego.reseteoTriqui(botones);
+                                
                                 LogicaJuego.numeroPartidas--;
+                                LogicaJuego.partidasGanadas1++;
+                                
                                 lblNumeroPartidas.setText("Partida: " + LogicaJuego.numeroPartidas);
+                                lblPartidasGanadas1.setText("Ganadas: " + LogicaJuego.partidasGanadas1);
                                 
                             }else{
                                 LogicaJuego.turno++; 
                             }
-                            
                         }
+                        
+                        //Jugador 2, el jugador utiliza el boton Derecho del mouse o el teclado para jugar
                         if(e.getButton() == MouseEvent.BUTTON3 && LogicaJuego.turno == 2){
+                            
                             botonPresionado.setEnabled(false);
                             botonPresionado.setText("O");
                             botonPresionado.setFont(new Font ("Agency FB", Font.BOLD, 35));
+                            
+                            //Verificar si gano, si no pasa el turno al primer juagor
                             if(logicaJuego.verificar(botones) == true){
+                                
                                 JOptionPane.showMessageDialog(null, "El jugador " + jugador2.getNombre() +" ha ganado",
                                         "Informacion", JOptionPane.INFORMATION_MESSAGE);
                                 logicaJuego.reseteoTriqui(botones);
+                                
                                 LogicaJuego.numeroPartidas--;
+                                LogicaJuego.partidasGanadas2++;
+                                
                                 lblNumeroPartidas.setText("Partida: " + LogicaJuego.numeroPartidas);
+                                lblPartidasGanadas2.setText("Ganadas: " + LogicaJuego.partidasGanadas2);                             
                             }else{
+                                
                                 LogicaJuego.turno--;
+                                
                             }
+                        }
+                        if(LogicaJuego.numeroPartidas == 0){                            
                             
+                            dispose();
                         }
                     }
                 });
+                
+                /*botones[i][j].addKeyListener(new KeyAdapter(){
+                    
+                    private int filaActual = 0;
+                    private int columnaActual = 0;
+                    
+                    public void keyPressed(KeyEvent e){
+                        if(LogicaJuego.turno == 2){
+                            
+                            int codigo = e.getKeyCode();
+                            if(codigo == KeyEvent.VK_UP && filaActual > 0){
+                                filaActual --;
+                            }
+
+                            else if(codigo == KeyEvent.VK_DOWN && filaActual < 2){
+                                filaActual ++;
+                            }
+
+                            else if(codigo == KeyEvent.VK_LEFT && columnaActual > 0){
+                                columnaActual --;
+                            }
+
+                            else if(codigo == KeyEvent.VK_LEFT && columnaActual < 2){
+                                columnaActual ++;
+                            }
+
+                            botones[filaActual][columnaActual].requestFocus();
+                        }
+                    }
+                });
+                
+                botones[i][j].setFocusable(true);*/
             }
         }
         

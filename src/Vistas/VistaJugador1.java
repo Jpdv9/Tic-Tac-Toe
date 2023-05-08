@@ -26,7 +26,6 @@ public class VistaJugador1 extends JFrame{
     private JTextField txtDigitarNombre;
     private JButton btnSiguiente;
     private JPanel jpContenido;
-    private LogicaJugador jugador2;
     
     
     public VistaJugador1(){

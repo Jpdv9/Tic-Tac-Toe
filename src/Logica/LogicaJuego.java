@@ -5,6 +5,8 @@
 package Logica;
 
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JButton;
 
 /**
@@ -15,10 +17,11 @@ public class LogicaJuego {
     
     public static int jugadores = 0;
     public static int numeroPartidas = 0;
-    public static int partidasSelecionadas = numeroPartidas;
     public JButton[][] botones;
     public static boolean ganar;
     public static int turno = 1;
+    public static int partidasGanadas1 = 0;
+    public static int partidasGanadas2 = 0;
     
     public LogicaJuego(JButton[][] botones){
         this.botones = botones;
@@ -64,5 +67,48 @@ public class LogicaJuego {
         
         turno = 1;
         ganar = false;
+    }
+    
+    public class ManejadorEventoKey implements KeyListener{
+        
+        private int filaActual = 0;
+        private int columnaActual = 0;
+        
+        
+        @Override
+        public void keyTyped(KeyEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            System.out.println("Hola");
+            int codigo = e.getKeyCode();
+            if(codigo == KeyEvent.VK_UP && filaActual > 0){
+                filaActual --;
+                System.out.println("Hola");
+            }
+            
+            else if(codigo == KeyEvent.VK_DOWN && filaActual < 2){
+                filaActual ++;
+            }
+            
+            else if(codigo == KeyEvent.VK_LEFT && columnaActual > 0){
+                columnaActual --;
+            }
+            
+            else if(codigo == KeyEvent.VK_LEFT && columnaActual < 2){
+                columnaActual ++;
+            }
+            
+            botones[filaActual][columnaActual].requestFocus();
+
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+        
     }
 }
