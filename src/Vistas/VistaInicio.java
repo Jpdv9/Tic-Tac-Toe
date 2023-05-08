@@ -1,6 +1,7 @@
 
 package Vistas;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +16,7 @@ import javax.swing.JPanel;
  */
 public class VistaInicio extends JFrame{
     
+    private Fondo jpFondo;
     private JLabel lblTitulo;
     private JButton btnJugar;
     private JButton btnInstrucciones;
@@ -36,23 +38,31 @@ public class VistaInicio extends JFrame{
         setLocationRelativeTo(null);
         setVisible(true);
         
+        jpFondo = new Fondo("/IMAGENES/FondoVistaInicio.jpg");
         jpContenido = new JPanel();
         
-        
+        jpFondo.setSize(500,465);
         add(jpContenido);
         
         lblTitulo = new JLabel("Tic Tac Toe");
         lblTitulo.setBounds(155,80,250,60);
         lblTitulo.setFont(new Font ("Comic Sans MS", Font.BOLD, 30));
         lblTitulo.setHorizontalAlignment(JLabel.LEFT);
+        lblTitulo.setForeground(Color.WHITE);
         
         btnJugar = new JButton("Jugar");
-        btnJugar.setBounds(175,180, 150,50);
-            btnJugar.setFont(new Font("Comic Sans MS",Font.BOLD,21));
+        btnJugar.setBounds(175,330, 150,50);
+        btnJugar.setFont(new Font("Comic Sans MS",Font.BOLD,21));
+        btnJugar.setForeground(Color.WHITE);
+        btnJugar.setOpaque(false);
+        btnJugar.setContentAreaFilled(false);
 
         btnInstrucciones = new JButton("Instrucciones");
-        btnInstrucciones.setBounds(150,250, 200,50);
+        btnInstrucciones.setBounds(150,400, 200,50);
         btnInstrucciones.setFont(new Font("Comic Sans MS",Font.BOLD,21));
+        btnInstrucciones.setForeground(Color.WHITE);
+        btnInstrucciones.setOpaque(false);
+        btnInstrucciones.setContentAreaFilled(false);
         
         jpContenido.setSize(550,475);
         jpContenido.setLayout(null);
@@ -60,6 +70,7 @@ public class VistaInicio extends JFrame{
         jpContenido.add(lblTitulo);
         jpContenido.add(btnJugar);
         jpContenido.add(btnInstrucciones);
+        jpContenido.add(jpFondo);
 
         
         ActionListener jugar = new ActionListener(){
