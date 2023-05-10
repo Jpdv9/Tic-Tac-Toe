@@ -42,6 +42,7 @@ public class VistaJuego extends JFrame{
     private LogicaJugador jugador2;
     private LogicaJuego logicaJuego;
     private ManejadorEventoKey keyListener;
+    private Fondo jpFondo ;
     
     
     public VistaJuego(LogicaJugador jugador1, LogicaJugador jugador2){
@@ -61,7 +62,11 @@ public class VistaJuego extends JFrame{
         setLocationRelativeTo(null);
         setVisible(true);
         
+        jpFondo = new Fondo("/IMAGENES/FondoJuego.jpg");
         jpContenido = new JPanel();
+        
+        jpFondo.setSize(800,800);
+
         
         JPanel jpLabels = new JPanel();
         
@@ -118,7 +123,7 @@ public class VistaJuego extends JFrame{
         jpLabels.setLayout(null);
         jpLabels.setPreferredSize(new Dimension(500, 300));
 
-        
+
         jpLabels.add(lblJugador1);
         jpLabels.add(lblNombreJugador1);
         jpLabels.add(lblJugador2);
@@ -127,6 +132,9 @@ public class VistaJuego extends JFrame{
         jpLabels.add(lblPartidasGanadas1);
         jpLabels.add(lblPartidasGanadas2);
         jpContenido.add(jpLabels);
+        jpContenido.add(jpFondo);
+        
+        
         
         jpContenido.setLayout(new BoxLayout(jpContenido, BoxLayout.Y_AXIS));
         
@@ -262,8 +270,8 @@ public class VistaJuego extends JFrame{
         // Un border
         Border borde = BorderFactory.createEmptyBorder(0,100, 100, 100);
         jpContenido.setBorder(borde);
-        
         add(jpContenido);
+        
     }
     
     public void mostrarBotones(JButton[][] botones, int filas, int columnas){
@@ -271,10 +279,12 @@ public class VistaJuego extends JFrame{
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
                 panel.add(botones[i][j]);
-                
+                        
             }
         }
         
         jpContenido.add(panel, BorderLayout.CENTER); 
+
     }
+    
 }
