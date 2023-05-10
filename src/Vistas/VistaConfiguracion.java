@@ -8,11 +8,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
 
 /**
  *
@@ -39,6 +40,8 @@ public class VistaConfiguracion extends JFrame{
     
     private void iniciarComponentes(){
         
+        Border bordePersonalizado = BorderFactory.createLineBorder(Color.WHITE, 3);
+        Border bordePersonalizado2 = BorderFactory.createLineBorder(Color.GREEN, 3);
         //configuracion de la pantalla
         setTitle("Tic Tac Toe");
         setSize(700,500);
@@ -71,13 +74,14 @@ public class VistaConfiguracion extends JFrame{
         btn1vs1.setBounds(30,80,77,92);
         btn1vs1.setOpaque(false);
         btn1vs1.setContentAreaFilled(false);
+        btn1vs1.setBorder(bordePersonalizado);
         
         //Imagen de computador y un muñeco, el texto colocado es temporal
         btn1vscpu = new JButton();
         btn1vscpu.setBounds(142,80,80,90);
         btn1vscpu.setOpaque(false);
         btn1vscpu.setContentAreaFilled(false);
-        
+        btn1vscpu.setBorder(bordePersonalizado);
         
         btnPartida1 = new JButton("1");
         btnPartida1.setBounds(495,80,50,50);
@@ -117,6 +121,7 @@ public class VistaConfiguracion extends JFrame{
         btnSiguiente.setForeground(Color.WHITE);
         btnSiguiente.setOpaque(false);
         btnSiguiente.setContentAreaFilled(false);
+        btnSiguiente.setBorder(bordePersonalizado);
 
         btnSiguiente.setEnabled(false);
         
@@ -160,9 +165,8 @@ public class VistaConfiguracion extends JFrame{
         btn1vs1.addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent e){
                 LogicaJuego.jugadores = 2;
-                
-                btn1vs1.setBorder(BorderFactory.createLoweredBevelBorder());
-                btn1vs1.setBackground(Color.LIGHT_GRAY);
+                LogicaJuego.jugandoContraCpu = false;                
+                btn1vs1.setBorder(bordePersonalizado2);
                 btn1vscpu.setBorder(BorderFactory.createLoweredBevelBorder());
                 btn1vscpu.setBackground(null);
                 
@@ -177,12 +181,12 @@ public class VistaConfiguracion extends JFrame{
                 LogicaJuego.jugadores = 1;
                 LogicaJuego.jugandoContraCpu = true;
                 
-                btn1vscpu.setBorder(BorderFactory.createLoweredBevelBorder());
-                btn1vscpu.setBackground(Color.LIGHT_GRAY);
+                btn1vscpu.setBorder(bordePersonalizado2);
                 btn1vs1.setBorder(BorderFactory.createLoweredBevelBorder());
                 btn1vs1.setBackground(null);
                 
                 if(LogicaJuego.numeroPartidas > 0){
+                    btnSiguiente.setBorder(bordePersonalizado2);
                     btnSiguiente.setEnabled(true);
                 } 
             }  
@@ -192,8 +196,7 @@ public class VistaConfiguracion extends JFrame{
             public void mousePressed(MouseEvent e){
                 LogicaJuego.numeroPartidas = 1;
                 
-                btnPartida1.setBorder(BorderFactory.createLoweredBevelBorder());
-                btnPartida1.setBackground(Color.LIGHT_GRAY);
+                btnPartida1.setBorder(bordePersonalizado2);
                 btnPartida2.setBorder(BorderFactory.createLoweredBevelBorder());
                 btnPartida2.setBackground(null);
                 btnPartida3.setBorder(BorderFactory.createLoweredBevelBorder());
@@ -202,6 +205,7 @@ public class VistaConfiguracion extends JFrame{
                 btnPartida4.setBackground(null);
                 
                 if(LogicaJuego.jugadores > 0){
+                    btnSiguiente.setBorder(bordePersonalizado2);
                     btnSiguiente.setEnabled(true);
                 } 
             }  
@@ -211,8 +215,7 @@ public class VistaConfiguracion extends JFrame{
             public void mousePressed(MouseEvent e){
                 LogicaJuego.numeroPartidas = 2;
                 
-                btnPartida2.setBorder(BorderFactory.createLoweredBevelBorder());
-                btnPartida2.setBackground(Color.LIGHT_GRAY);
+                btnPartida2.setBorder(bordePersonalizado2);
                 btnPartida1.setBorder(BorderFactory.createLoweredBevelBorder());
                 btnPartida1.setBackground(null);
                 btnPartida3.setBorder(BorderFactory.createLoweredBevelBorder());
@@ -230,8 +233,7 @@ public class VistaConfiguracion extends JFrame{
             public void mousePressed(MouseEvent e){
                 LogicaJuego.numeroPartidas = 3;
                 
-                btnPartida3.setBorder(BorderFactory.createLoweredBevelBorder());
-                btnPartida3.setBackground(Color.LIGHT_GRAY);
+                btnPartida3.setBorder(bordePersonalizado2);
                 btnPartida1.setBorder(BorderFactory.createLoweredBevelBorder());
                 btnPartida1.setBackground(null);
                 btnPartida2.setBorder(BorderFactory.createLoweredBevelBorder());
@@ -249,8 +251,7 @@ public class VistaConfiguracion extends JFrame{
             public void mousePressed(MouseEvent e){
                 LogicaJuego.numeroPartidas = 4;
                 
-                btnPartida4.setBorder(BorderFactory.createLoweredBevelBorder());
-                btnPartida4.setBackground(Color.LIGHT_GRAY);
+                btnPartida4.setBorder(bordePersonalizado2);
                 btnPartida1.setBorder(BorderFactory.createLoweredBevelBorder());
                 btnPartida1.setBackground(null);
                 btnPartida2.setBorder(BorderFactory.createLoweredBevelBorder());

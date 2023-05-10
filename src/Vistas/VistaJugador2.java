@@ -3,6 +3,7 @@ package Vistas;
 
 
 import Logica.LogicaJugador;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -52,14 +53,22 @@ public class VistaJugador2 extends JFrame{
 
         
         lblNombreJugador = new JLabel("Nombre Jugador 2");
-        lblNombreJugador.setBounds(183, 50, 150, 150);
-        lblNombreJugador.setFont(new Font ("Agency FB", Font.BOLD, 25));
+        lblNombreJugador.setBounds(150, 20, 250, 150);
+        lblNombreJugador.setFont(new Font("Comic Sans MS",Font.BOLD,21));
+        lblNombreJugador.setForeground(Color.WHITE);
         
         txtDigitarNombre = new JTextField(15);
-        txtDigitarNombre.setBounds(168, 180, 170, 50);
+        txtDigitarNombre.setBounds(210, 180, 170, 50);
+        txtDigitarNombre.setFont(new Font("Comic Sans MS",Font.BOLD,21));
+        txtDigitarNombre.setForeground(Color.WHITE);
+        txtDigitarNombre.setOpaque(false);
         
         btnSiguiente = new JButton("Siguiente");
-        btnSiguiente.setBounds(180, 250, 150, 50);
+        btnSiguiente.setBounds(150, 350, 200, 50);
+        btnSiguiente.setFont(new Font("Comic Sans MS",Font.BOLD,21));
+        btnSiguiente.setForeground(Color.WHITE);
+        btnSiguiente.setOpaque(false);
+        btnSiguiente.setContentAreaFilled(false);
         
         jpContenido.setLayout(null);
         
