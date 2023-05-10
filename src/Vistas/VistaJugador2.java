@@ -24,7 +24,7 @@ public class VistaJugador2 extends JFrame{
     private JButton btnSiguiente;
     private JPanel jpContenido;
     private LogicaJugador jugador1;
-
+    private Fondo jpFondo;
     
     
     
@@ -44,7 +44,10 @@ public class VistaJugador2 extends JFrame{
         
 
         
+        jpFondo = new Fondo("/IMAGENES/FondoJugador2.jpg");
         jpContenido = new JPanel();
+        
+        jpFondo.setSize(500,465);
         add(jpContenido);
 
         
@@ -63,6 +66,7 @@ public class VistaJugador2 extends JFrame{
         jpContenido.add(lblNombreJugador);
         jpContenido.add(txtDigitarNombre);
         jpContenido.add(btnSiguiente);
+        jpContenido.add(jpFondo);
         
         ActionListener siguiente = new ActionListener(){
             @Override

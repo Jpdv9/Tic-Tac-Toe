@@ -23,7 +23,7 @@ public class VistaJugador1 extends JFrame{
     private JTextField txtDigitarNombre;
     private JButton btnSiguiente;
     private JPanel jpContenido;
-    
+    private Fondo jpFondo; 
     
     public VistaJugador1(){
         iniciarComponentes();
@@ -38,7 +38,10 @@ public class VistaJugador1 extends JFrame{
         setLocationRelativeTo(null);
         setVisible(true);
         
+        jpFondo = new Fondo("/IMAGENES/FondoJugador1.jpg");
         jpContenido = new JPanel();
+        
+        jpFondo.setSize(500,465);
         add(jpContenido);
         
         lblNombreJugador = new JLabel("Nombre Jugador 1");
@@ -56,6 +59,7 @@ public class VistaJugador1 extends JFrame{
         jpContenido.add(lblNombreJugador);
         jpContenido.add(txtDigitarNombre);
         jpContenido.add(btnSiguiente);
+        jpContenido.add(jpFondo);
         
         ActionListener siguiente = new ActionListener(){
             @Override
