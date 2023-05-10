@@ -150,16 +150,33 @@ public class VistaJuego extends JFrame{
                         JButton botonPresionado = (JButton) e.getSource();
                         
                         // Jugador 1, el jugador utiliza el boton Izquiedo del mouse para jugar
-                        if(e.getButton() == MouseEvent.BUTTON1 && LogicaJuego.turno == 1){
+                        if(e.getButton() == MouseEvent.BUTTON1 && LogicaJuego.turno == 1 && botonPresionado.isEnabled()){
                             
-                            botonPresionado.setEnabled(false);
                             botonPresionado.setText("X");
+                            botonPresionado.setEnabled(false);
                             botonPresionado.setFont(new Font ("Agency FB", Font.BOLD, 35));
                             
-                            //Verificar si gano, si no pasa el turno al segundo juagor
-                            if(logicaJuego.verificar(botones) == true){
+                            LogicaJuego.ultimoJugador = 0;
+                            
+                            logicaJuego.cpu(botones);
+                            
+                            if(logicaJuego.empate(botones)){
                                 
-                                JOptionPane.showMessageDialog(null, "El jugador " + jugador1.getNombre() +" ha ganado",
+                                JOptionPane.showMessageDialog(null, "El juego termino en empate",
+                                        "Informacion", JOptionPane.INFORMATION_MESSAGE);
+                                logicaJuego.reseteoTriqui(botones);
+                                
+                                LogicaJuego.numeroPartidas--;
+                                
+                                lblNumeroPartidas.setText("Partida: " + LogicaJuego.numeroPartidas);
+                            }    
+                            else if(logicaJuego.verificar(botones)){
+                                
+                                
+                                String nombreJugador = jugador1.getNombre();
+                                String ganador = LogicaJuego.ultimoJugador == 0 ? nombreJugador : "CPU";
+                                
+                                JOptionPane.showMessageDialog(null, "El jugador " + ganador +" ha ganado",
                                         "Informacion", JOptionPane.INFORMATION_MESSAGE);
                                 logicaJuego.reseteoTriqui(botones);
                                 
@@ -175,28 +192,28 @@ public class VistaJuego extends JFrame{
                         }
                         
                         //Jugador 2, el jugador utiliza el boton Derecho del mouse o el teclado para jugar
-                        if(e.getButton() == MouseEvent.BUTTON3 && LogicaJuego.turno == 2){
+                        if(e.getButton() == MouseEvent.BUTTON3 && LogicaJuego.turno == 2 && botonPresionado.isEnabled() && !LogicaJuego.jugandoContraCpu){
                             
-                            botonPresionado.setEnabled(false);
                             botonPresionado.setText("O");
+                            botonPresionado.setEnabled(false);
                             botonPresionado.setFont(new Font ("Agency FB", Font.BOLD, 35));
                             
-                            //Verificar si gano, si no pasa el turno al primer juagor
-                            if(logicaJuego.verificar(botones) == true){
+                            
+                            if(logicaJuego.verificar(botones)){
                                 
                                 JOptionPane.showMessageDialog(null, "El jugador " + jugador2.getNombre() +" ha ganado",
                                         "Informacion", JOptionPane.INFORMATION_MESSAGE);
+                                
                                 logicaJuego.reseteoTriqui(botones);
                                 
                                 LogicaJuego.numeroPartidas--;
                                 LogicaJuego.partidasGanadas2++;
                                 
                                 lblNumeroPartidas.setText("Partida: " + LogicaJuego.numeroPartidas);
-                                lblPartidasGanadas2.setText("Ganadas: " + LogicaJuego.partidasGanadas2);                             
-                            }else{
+                                lblPartidasGanadas2.setText("Ganadas: " + LogicaJuego.partidasGanadas2);
                                 
+                            }else{ 
                                 LogicaJuego.turno--;
-                                
                             }
                         }
                         if(LogicaJuego.numeroPartidas == 0){                            

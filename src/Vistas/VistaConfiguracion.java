@@ -136,6 +136,7 @@ public class VistaConfiguracion extends JFrame{
         btn1vscpu.addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent e){
                 LogicaJuego.jugadores = 1;
+                LogicaJuego.jugandoContraCpu = true;
                 
                 btn1vscpu.setBorder(BorderFactory.createLoweredBevelBorder());
                 btn1vscpu.setBackground(Color.LIGHT_GRAY);
