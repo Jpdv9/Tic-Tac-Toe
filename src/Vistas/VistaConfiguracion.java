@@ -19,8 +19,7 @@ import javax.swing.JPanel;
  * @author jeanp
  */
 public class VistaConfiguracion extends JFrame{
-    private JLabel lbl1vs1;
-    private JLabel lbl1vscpu;
+    private JLabel lblModoPartida;
     private JLabel lblNumeroPartidas;
     private JButton btn1vs1;
     private JButton btn1vscpu;
@@ -31,6 +30,7 @@ public class VistaConfiguracion extends JFrame{
     private JButton btnSiguiente;
     private JButton btnAtras; 
     private JPanel jpContenido;
+    private Fondo jpFondo;
     
     
     public VistaConfiguracion(){
@@ -46,56 +46,94 @@ public class VistaConfiguracion extends JFrame{
         setLocationRelativeTo(null);
         setVisible(true);
         
-        
+        jpFondo = new Fondo("/IMAGENES/VistaConfiguracion.jpg");
         jpContenido = new JPanel();
+        jpFondo.setSize(700,465);
         add(jpContenido);
         
-        lbl1vs1 = new JLabel("1 vs 1");
-        lbl1vs1.setBounds(465,15,100,100);
-        lbl1vs1.setFont(new Font ("Agency FB", Font.BOLD, 20));
+
         
-        lbl1vscpu = new JLabel("1 vs CPU");
-        lbl1vscpu.setBounds(165,15,100,100);
-        lbl1vscpu.setFont(new Font ("Agency FB", Font.BOLD, 20));
+        lblModoPartida = new JLabel("<html><body> Escoge el modo <br> de partida :</body></html>");
+        lblModoPartida.setBounds(75,0,200,100);
+        lblModoPartida.setFont(new Font ("Comic Sans MS", Font.BOLD, 18));
+        lblModoPartida.setHorizontalAlignment(JLabel.LEFT);
+        lblModoPartida.setForeground(Color.WHITE);
         
         lblNumeroPartidas = new JLabel("Numero De Partidas");
-        lblNumeroPartidas.setBounds(275, 150, 150,150);
-        lblNumeroPartidas.setFont(new Font ("Agency FB", Font.BOLD, 20));
+        lblNumeroPartidas.setBounds(475, 0, 250,100);
+        lblNumeroPartidas.setFont(new Font ("Comic Sans MS", Font.BOLD, 18));
+        lblNumeroPartidas.setHorizontalAlignment(JLabel.LEFT);
+        lblNumeroPartidas.setForeground(Color.WHITE);
         
         
         //Imagenes en el botton de dos muñecos, el texto colocado es temporal
-        btn1vs1 = new JButton("1 vs 1");
-        btn1vs1.setBounds(425,90,100,100);
+        btn1vs1 = new JButton();
+        btn1vs1.setBounds(30,80,77,92);
+        btn1vs1.setOpaque(false);
+        btn1vs1.setContentAreaFilled(false);
         
         //Imagen de computador y un muñeco, el texto colocado es temporal
-        btn1vscpu = new JButton("1 vs CPU");
-        btn1vscpu.setBounds(140,90,100,100);
+        btn1vscpu = new JButton();
+        btn1vscpu.setBounds(142,80,80,90);
+        btn1vscpu.setOpaque(false);
+        btn1vscpu.setContentAreaFilled(false);
+        
         
         btnPartida1 = new JButton("1");
-        btnPartida1.setBounds(160,250,50,50);
+        btnPartida1.setBounds(495,80,50,50);
+        btnPartida1.setFont(new Font("Comic Sans MS",Font.BOLD,21));
+        btnPartida1.setForeground(Color.WHITE);
+        btnPartida1.setOpaque(false);
+        btnPartida1.setContentAreaFilled(false);
+
         
         btnPartida2 = new JButton("2");
-        btnPartida2.setBounds(260,250,50,50);
+        btnPartida2.setBounds(570,80,50,50);
+        btnPartida2.setFont(new Font("Comic Sans MS",Font.BOLD,21));
+        btnPartida2.setForeground(Color.WHITE);
+        btnPartida2.setOpaque(false);
+        btnPartida2.setContentAreaFilled(false);
+
         
         btnPartida3 = new JButton("3");
-        btnPartida3.setBounds(360,250,50,50);
+        btnPartida3.setBounds(495,140,50,50);
+        btnPartida3.setFont(new Font("Comic Sans MS",Font.BOLD,21));
+        btnPartida3.setForeground(Color.WHITE);
+        btnPartida3.setOpaque(false);
+        btnPartida3.setContentAreaFilled(false);
+
         
         btnPartida4 = new JButton("4");
-        btnPartida4.setBounds(460,250,50,50);
+        btnPartida4.setBounds(570,140,50,50);
+        btnPartida4.setFont(new Font("Comic Sans MS",Font.BOLD,21));
+        btnPartida4.setForeground(Color.WHITE);
+        btnPartida4.setOpaque(false);
+        btnPartida4.setContentAreaFilled(false);
+
         
         btnSiguiente = new JButton("Siguiente");
-        btnSiguiente.setBounds(550,405,125,50);
+        btnSiguiente.setBounds(440,405,145,50);
+        btnSiguiente.setFont(new Font("Comic Sans MS",Font.BOLD,21));
+        btnSiguiente.setForeground(Color.WHITE);
+        btnSiguiente.setOpaque(false);
+        btnSiguiente.setContentAreaFilled(false);
+
         btnSiguiente.setEnabled(false);
         
         btnAtras = new JButton("Atras");
         btnAtras.setBounds(5,405,125,50);
+        btnAtras.setFont(new Font("Comic Sans MS",Font.BOLD,18));
+        btnAtras.setForeground(Color.WHITE);
+        btnAtras.setOpaque(false);
+        btnAtras.setContentAreaFilled(false);
+
         
         
         jpContenido.setSize(700,500);
         jpContenido.setLayout(null);
         
-        jpContenido.add(lbl1vs1);
-        jpContenido.add(lbl1vscpu);
+
+        jpContenido.add(lblModoPartida);
         jpContenido.add(lblNumeroPartidas);
         jpContenido.add(btn1vs1);
         jpContenido.add(btn1vscpu);
@@ -105,6 +143,7 @@ public class VistaConfiguracion extends JFrame{
         jpContenido.add(btnPartida4);
         jpContenido.add(btnSiguiente);
         jpContenido.add(btnAtras);
+        jpContenido.add(jpFondo);
         
         
         ActionListener siguiente = new ActionListener(){
