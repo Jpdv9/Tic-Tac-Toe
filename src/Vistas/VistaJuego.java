@@ -66,10 +66,9 @@ public class VistaJuego extends JFrame{
         jpContenido = new JPanel();
         
         jpFondo.setSize(800,800);
-
         
         JPanel jpLabels = new JPanel();
-        
+        jpLabels.setOpaque(false);
         
         /*
         * Nombre de los jugadores
@@ -123,7 +122,6 @@ public class VistaJuego extends JFrame{
         jpLabels.setLayout(null);
         jpLabels.setPreferredSize(new Dimension(500, 300));
 
-
         jpLabels.add(lblJugador1);
         jpLabels.add(lblNombreJugador1);
         jpLabels.add(lblJugador2);
@@ -132,7 +130,7 @@ public class VistaJuego extends JFrame{
         jpLabels.add(lblPartidasGanadas1);
         jpLabels.add(lblPartidasGanadas2);
         jpContenido.add(jpLabels);
-        jpContenido.add(jpFondo);
+        
         
         
         
@@ -270,6 +268,7 @@ public class VistaJuego extends JFrame{
         // Un border
         Border borde = BorderFactory.createEmptyBorder(0,100, 100, 100);
         jpContenido.setBorder(borde);
+
         add(jpContenido);
         
     }
@@ -282,7 +281,7 @@ public class VistaJuego extends JFrame{
                         
             }
         }
-        
+        panel.setOpaque(false);
         jpContenido.add(panel, BorderLayout.CENTER); 
 
     }
