@@ -2,7 +2,7 @@
 package Vistas;
 
 import Logica.LogicaJuego;
-import Logica.LogicaJuego.ManejadorEventoKey;
+//import Logica.LogicaJuego.ManejadorEventoKey;
 import Logica.LogicaJugador;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -41,7 +41,7 @@ public class VistaJuego extends JFrame{
     private LogicaJugador jugador1;
     private LogicaJugador jugador2;
     private LogicaJuego logicaJuego;
-    private ManejadorEventoKey keyListener;
+    //private ManejadorEventoKey keyListener;
     private Fondo jpFondo ;
     
     
@@ -148,7 +148,7 @@ public class VistaJuego extends JFrame{
                 botones[i][j].setHorizontalAlignment(SwingConstants.CENTER);
                 botones[i][j].setVerticalAlignment(SwingConstants.CENTER);
                 botones[i][j].setPreferredSize(new Dimension(100,200));
-                botones[i][j].addKeyListener(keyListener);
+                //botones[i][j].addKeyListener(keyListener);
                 botones[i][j].setFocusable(true);
                 
                 botones[i][j].addMouseListener(new MouseAdapter(){
@@ -170,8 +170,8 @@ public class VistaJuego extends JFrame{
                                 
                                 JOptionPane.showMessageDialog(null, "El juego termino en empate",
                                         "Informacion", JOptionPane.INFORMATION_MESSAGE);
-                                logicaJuego.reseteoTriqui(botones);
                                 
+                                logicaJuego.reseteoTriqui(botones);
                                 LogicaJuego.numeroPartidas--;
                                 
                                 lblNumeroPartidas.setText("Partida: " + LogicaJuego.numeroPartidas);
@@ -222,8 +222,9 @@ public class VistaJuego extends JFrame{
                                 LogicaJuego.turno--;
                             }
                         }
-                        if(LogicaJuego.numeroPartidas == 0){                            
+                        if(LogicaJuego.numeroPartidas == 0){  
                             
+                            VistaEstadistica vistaestadistica = new VistaEstadistica(jugador1, jugador2);
                             dispose();
                         }
                     }
@@ -231,35 +232,41 @@ public class VistaJuego extends JFrame{
                 
                 /*botones[i][j].addKeyListener(new KeyAdapter(){
                     
-                    private int filaActual = 0;
-                    private int columnaActual = 0;
+                    private int filaActual = 1;
+                    private int columnaActual = 1;
                     
                     public void keyPressed(KeyEvent e){
-                        if(LogicaJuego.turno == 2){
+                        //if(LogicaJuego.turno == 2){
                             
                             int codigo = e.getKeyCode();
                             if(codigo == KeyEvent.VK_UP && filaActual > 0){
+                                System.out.println("ARRIBA");
                                 filaActual --;
                             }
 
                             else if(codigo == KeyEvent.VK_DOWN && filaActual < 2){
+                                System.out.println("ABAJO");
                                 filaActual ++;
                             }
 
                             else if(codigo == KeyEvent.VK_LEFT && columnaActual > 0){
+                                System.out.println("IZQUIERDA");
                                 columnaActual --;
                             }
 
-                            else if(codigo == KeyEvent.VK_LEFT && columnaActual < 2){
+                            else if(codigo == KeyEvent.VK_RIGHT && columnaActual < 2){
+                                System.out.println("DERECHA");
                                 columnaActual ++;
                             }
 
                             botones[filaActual][columnaActual].requestFocus();
-                        }
+                        //}
                     }
-                });
+                });*/
                 
-                botones[i][j].setFocusable(true);*/
+                
+                
+                botones[i][j].setFocusable(true);
             }
         }
         
@@ -267,6 +274,7 @@ public class VistaJuego extends JFrame{
         
         // Un border
         Border borde = BorderFactory.createEmptyBorder(0,100, 100, 100);
+        
         jpContenido.setBorder(borde);
 
         add(jpContenido);

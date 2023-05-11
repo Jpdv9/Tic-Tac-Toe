@@ -85,25 +85,31 @@ public class LogicaJuego {
              
             if(espacioDisponible(botones)){
                 
-                for(JButton[] filaBoton : botones){
+                
+                outer :for(JButton[] filaBoton : botones){
                     
                     col : for(JButton columnaBoton : filaBoton){
                         
                         if(columnaBoton.getText().equals("")){
-
+                            
+                            
                             columnaBoton.setText("O");
                             columnaBoton.setEnabled(false);
                             columnaBoton.setFont(new Font ("Agency FB", Font.BOLD, 35));
                             
                             ultimoJugador = 1;
-                            System.out.println("Hola 32");
                             turno--;
                             
                             return;
                             
                         }else if(columnaBoton.getText().equals("X")){
+                            if(verificar(botones)){
+                                ultimoJugador = 0;
+                                break outer;
+                            }
                             
                             continue col;
+                            
                             
                         }
                     }
@@ -111,10 +117,8 @@ public class LogicaJuego {
                 }
                 
             }
-            
+           
            ultimoJugador = 0;
-           System.out.println("Hola");
-            
         }
         
     }
@@ -133,7 +137,7 @@ public class LogicaJuego {
         return false;
     }
     
-    public class ManejadorEventoKey implements KeyListener{
+    /*public class ManejadorEventoKey implements KeyListener{
         
         private int filaActual = 0;
         private int columnaActual = 0;
@@ -146,7 +150,6 @@ public class LogicaJuego {
 
         @Override
         public void keyPressed(KeyEvent e) {
-            System.out.println("Hola");
             int codigo = e.getKeyCode();
             if(codigo == KeyEvent.VK_UP && filaActual > 0){
                 filaActual --;
@@ -173,5 +176,5 @@ public class LogicaJuego {
         public void keyReleased(KeyEvent e) {
             throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
-    }
+    }*/
 }
