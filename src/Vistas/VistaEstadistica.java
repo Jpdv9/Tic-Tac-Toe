@@ -15,6 +15,7 @@ import javax.swing.JPanel;
  */
 public class VistaEstadistica extends JFrame{
     
+    private Fondo jpFondo;
     private JLabel lblTitulo;
     private JLabel lblNombreJugador1;
     private JLabel lblNombreJugador2;
@@ -37,12 +38,15 @@ public class VistaEstadistica extends JFrame{
         
         //configuracion de la pantalla
         setTitle("Tic Tac Toe");
-        setSize(500,500);
+        setSize(550,550);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         
+        jpFondo = new Fondo("/IMAGENES/FondoEstadisticas.jpg");
         jpContenido = new JPanel();
+        jpFondo.setSize(540,520);
+        
         add(jpContenido);
         
         lblTitulo = new JLabel("ESTADISTICA");
@@ -99,5 +103,6 @@ public class VistaEstadistica extends JFrame{
         jpContenido.add(lblPartidasGanadas1);
         jpContenido.add(lblNombreJugador2);
         jpContenido.add(lblPartidasGanadas2);
+        jpContenido.add(jpFondo);
     }
 }
