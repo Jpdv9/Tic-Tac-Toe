@@ -60,14 +60,14 @@ public class VistaJuego extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
-       
-        Border bordePersonalizado = BorderFactory.createLineBorder(Color.BLACK, 3);
+        
+        Border bordePersonalizado = BorderFactory.createLineBorder(Color.GREEN, 3);
         Border bordePersonalizado2 = BorderFactory.createLineBorder(Color.WHITE, 3);
        
-        jpFondo = new Fondo("/IMAGENES/FondoJuego.jpg");
+        jpFondo = new Fondo("/IMAGENES/FondoSJuego.jpg");
         jpContenido = new JPanel();
        
-        jpFondo.setSize(800,800);
+        jpFondo.setSize(700,300);
        
         JPanel jpLabels = new JPanel();
         jpLabels.setOpaque(false);
@@ -131,8 +131,9 @@ public class VistaJuego extends JFrame{
         jpLabels.add(lblNumeroPartidas);
         jpLabels.add(lblPartidasGanadas1);
         jpLabels.add(lblPartidasGanadas2);
+        jpLabels.add(jpFondo);
         jpContenido.add(jpLabels);
-       
+        jpContenido.setBackground(Color.BLACK);
        
        
        
@@ -275,6 +276,8 @@ public class VistaJuego extends JFrame{
                                     botones[filaActual][columnaActual].setEnabled(false);
                                     botones[filaActual][columnaActual].setFont(new Font ("Agency FB", Font.BOLD, 35));
                                    
+                                   LogicaJuego.ultimoJugador = 0;
+                                   logicaJuego.cpu(botones);
                                    
                                     if(logicaJuego.empate(botones)){
                                
@@ -331,7 +334,7 @@ public class VistaJuego extends JFrame{
        
        
         mostrarBotones(botones, 3, 3);
-       
+
         // Un border
         Border borde = BorderFactory.createEmptyBorder(0,100, 100, 100);
        
@@ -343,6 +346,7 @@ public class VistaJuego extends JFrame{
    
     public void mostrarBotones(JButton[][] botones, int filas, int columnas){
         JPanel panel = new JPanel(new GridLayout(filas, columnas,5, 5));
+        
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
                 panel.add(botones[i][j]);

@@ -3,13 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/jeanp/OneDrive/Documents/NetBeansProjects/Tic%20Tac%20Toe/src/Vistas/VistaConfiguracion.java</file>
-            <file>file:/C:/Users/jeanp/OneDrive/Documents/NetBeansProjects/Tic%20Tac%20Toe/src/Vistas/VistaJugador2.java</file>
-            <file>file:/C:/Users/jeanp/OneDrive/Documents/NetBeansProjects/Tic%20Tac%20Toe/src/Logica/LogicaJuego.java</file>
-            <file>file:/C:/Users/jeanp/OneDrive/Documents/NetBeansProjects/Tic%20Tac%20Toe/src/Vistas/VistaEstadistica.java</file>
-            <file>file:/C:/Users/jeanp/OneDrive/Documents/NetBeansProjects/Tic%20Tac%20Toe/src/Logica/LogicaJugador.java</file>
-            <file>file:/C:/Users/jeanp/OneDrive/Documents/NetBeansProjects/Tic%20Tac%20Toe/src/Vistas/VistaJuego.java</file>
-            <file>file:/C:/Users/jeanp/OneDrive/Documents/NetBeansProjects/Tic%20Tac%20Toe/src/Vistas/VistaJugador1.java</file>
+            <file>file:/C:/Users/Franklin%20Aguirre/Documents/NetBeansProjects/Tic-Tac-Toe/src/Logica/LogicaJuego.java</file>
+            <file>file:/C:/Users/Franklin%20Aguirre/Documents/NetBeansProjects/Tic-Tac-Toe/src/Vistas/VistaJugador2.java</file>
+            <file>file:/C:/Users/Franklin%20Aguirre/Documents/NetBeansProjects/Tic-Tac-Toe/src/Vistas/VistaConfiguracion.java</file>
+            <file>file:/C:/Users/Franklin%20Aguirre/Documents/NetBeansProjects/Tic-Tac-Toe/src/Vistas/Fondo.java</file>
+            <file>file:/C:/Users/Franklin%20Aguirre/Documents/NetBeansProjects/Tic-Tac-Toe/src/IMAGENES/FondoJuego.jpg</file>
+            <file>file:/C:/Users/Franklin%20Aguirre/Documents/NetBeansProjects/Tic-Tac-Toe/src/IMAGENES/FondoJugador2.jpg</file>
+            <file>file:/C:/Users/Franklin%20Aguirre/Documents/NetBeansProjects/Tic-Tac-Toe/src/IMAGENES/FondoJugador1.jpg</file>
+            <file>file:/C:/Users/Franklin%20Aguirre/Documents/NetBeansProjects/Tic-Tac-Toe/src/Vistas/VistaJuego.java</file>
+            <file>file:/C:/Users/Franklin%20Aguirre/Documents/NetBeansProjects/Tic-Tac-Toe/src/IMAGENES/VistaConfiguracion.jpg</file>
+            <file>file:/C:/Users/Franklin%20Aguirre/Documents/NetBeansProjects/Tic-Tac-Toe/src/Vistas/VistaEstadistica.java</file>
+            <file>file:/C:/Users/Franklin%20Aguirre/Documents/NetBeansProjects/Tic-Tac-Toe/src/Vistas/VistaInicio.java</file>
+            <file>file:/C:/Users/Franklin%20Aguirre/Documents/NetBeansProjects/Tic-Tac-Toe/src/Vistas/VistaJugador1.java</file>
+            <file>file:/C:/Users/Franklin%20Aguirre/Documents/NetBeansProjects/Tic-Tac-Toe/src/IMAGENES/FondoVistaInicio.jpg</file>
         </group>
     </open-files>
 </project-private>

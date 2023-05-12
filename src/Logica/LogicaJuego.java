@@ -76,6 +76,12 @@ public class LogicaJuego {
         ganar = false;
         ultimoJugador = 0;
     }
+    public void reseteoTotal(){
+       numeroPartidas = 0;
+       jugadores = 0;
+       partidasGanadas1 = 0;
+       partidasGanadas2 = 0;
+    }
     
     public void cpu(JButton[][] botones){
         
