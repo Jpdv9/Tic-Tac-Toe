@@ -151,6 +151,17 @@ public class VistaConfiguracion extends JFrame{
         jpContenido.add(jpFondo);
         
         
+        
+         ActionListener atras = new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                VistaInicio vistainicio = new VistaInicio();
+                dispose();
+            }
+        };
+        
+        btnAtras.addActionListener(atras);
+        
         ActionListener siguiente = new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -224,6 +235,7 @@ public class VistaConfiguracion extends JFrame{
                 btnPartida4.setBackground(null);
                 
                 if(LogicaJuego.jugadores > 0){
+                    btnSiguiente.setBorder(bordePersonalizado2);
                     btnSiguiente.setEnabled(true);
                 } 
             }  
@@ -242,6 +254,7 @@ public class VistaConfiguracion extends JFrame{
                 btnPartida4.setBackground(null);
                 
                 if(LogicaJuego.jugadores > 0){
+                    btnSiguiente.setBorder(bordePersonalizado2);
                     btnSiguiente.setEnabled(true);
                 } 
             }  
@@ -260,6 +273,7 @@ public class VistaConfiguracion extends JFrame{
                 btnPartida3.setBackground(null);
                 
                 if(LogicaJuego.jugadores > 0){
+                    btnSiguiente.setBorder(bordePersonalizado2);
                     btnSiguiente.setEnabled(true);
                 } 
             }  

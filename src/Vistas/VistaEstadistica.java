@@ -49,9 +49,6 @@ public class VistaEstadistica extends JFrame{
         
         add(jpContenido);
         
-        lblTitulo = new JLabel("ESTADISTICA");
-        lblTitulo.setBounds(225,50,100,100);
-        lblTitulo.setFont(new Font("Agency FB", Font.BOLD, 20));
         
         /* 
         * Estadisticas del Jugador 1
@@ -63,15 +60,15 @@ public class VistaEstadistica extends JFrame{
         
         nombre1 = nombre1.substring(0, 1).toUpperCase() + 
                 nombre1.substring(1).toLowerCase();
-        lblNombreJugador1 = new JLabel("Nombre del Jugador 1: " + nombre1);
-        lblNombreJugador1.setBounds(100, 150, 100,100);
-        lblNombreJugador1.setFont(new Font("Agency FB", Font.BOLD, 20));
+        lblNombreJugador1 = new JLabel("<html>Nombre del Jugador 1: <br>" + nombre1 + "</html>");
+        lblNombreJugador1.setBounds(100, 150, 200,200);
+        lblNombreJugador1.setFont(new Font ("Comic Sans MS", Font.BOLD, 15));
         
         //PARTIDAS GANADAS
         
-        lblPartidasGanadas1 = new JLabel("Partidas Ganadas: " + LogicaJuego.partidasGanadas1);
-        lblPartidasGanadas1.setBounds(100, 200, 100,100);
-        lblPartidasGanadas1.setFont(new Font("Agency FB", Font.BOLD, 20));
+        lblPartidasGanadas1 = new JLabel("<html>Partidas Ganadas: <br> " + LogicaJuego.partidasGanadas1 + "</html>");
+        lblPartidasGanadas1.setBounds(100, 200, 200,200);
+        lblPartidasGanadas1.setFont(new Font ("Comic Sans MS", Font.BOLD, 15));
         
         /* 
         * Estadisticas del Jugador 2
@@ -83,22 +80,21 @@ public class VistaEstadistica extends JFrame{
         
         nombre1 = nombre2.substring(0, 1).toUpperCase() + 
                 nombre2.substring(1).toLowerCase();
-        lblNombreJugador2 = new JLabel("Nombre del Jugador 2: " + nombre1);
-        lblNombreJugador2.setBounds(300, 150, 100,100);
-        lblNombreJugador2.setFont(new Font("Agency FB", Font.BOLD, 20));
+        lblNombreJugador2 = new JLabel("<html>Nombre del Jugador 2: <br> " + nombre1 + "</html>");
+        lblNombreJugador2.setBounds(300, 150, 200,200);
+        lblNombreJugador2.setFont(new Font ("Comic Sans MS", Font.BOLD, 15));
         
         //PARTIDAS GANADAS
         
-        lblPartidasGanadas2 = new JLabel("Partidas Ganadas: " + LogicaJuego.partidasGanadas2);
-        lblPartidasGanadas2.setBounds(300, 200, 100,100);
-        lblPartidasGanadas2.setFont(new Font("Agency FB", Font.BOLD, 20));
+        lblPartidasGanadas2 = new JLabel("<html>Partidas Ganadas:  <br>" + LogicaJuego.partidasGanadas2 + "</html>");
+        lblPartidasGanadas2.setBounds(300, 200, 200,200);
+        lblPartidasGanadas2.setFont(new Font ("Comic Sans MS", Font.BOLD, 15));
         
         
         
         jpContenido.setLayout(null);
         jpContenido.setSize(500, 500);
         
-        jpContenido.add(lblTitulo);
         jpContenido.add(lblNombreJugador1);
         jpContenido.add(lblPartidasGanadas1);
         jpContenido.add(lblNombreJugador2);

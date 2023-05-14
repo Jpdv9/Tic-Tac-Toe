@@ -78,7 +78,7 @@ public class VistaJuego extends JFrame{
        
         lblJugador1 = new JLabel("JUGADOR 1:");
         lblJugador1.setBounds(0,0,100,100);
-        lblJugador1.setFont(new Font("Agency FB", Font.BOLD, 18));
+        lblJugador1.setFont(new Font ("Comic Sans MS", Font.BOLD, 15));
        
         String nombre1 = jugador1.getNombre();
        
@@ -87,13 +87,13 @@ public class VistaJuego extends JFrame{
         lblNombreJugador1 = new JLabel(nombre1);
         lblNombreJugador1.setBounds(0, 25, 100,100);
         lblNombreJugador1.setForeground(Color.GRAY);
-        lblNombreJugador1.setFont(new Font("arial", Font.BOLD, 18));
+        lblNombreJugador1.setFont(new Font ("Comic Sans MS", Font.BOLD, 15));
        
        
         //Jugador 2
         lblJugador2 = new JLabel("JUGADOR 2:");
-        lblJugador2.setBounds(490,0,100,100);
-        lblJugador2.setFont(new Font("Agency FB", Font.BOLD, 18));
+        lblJugador2.setBounds(480,0,100,100);
+        lblJugador2.setFont(new Font ("Comic Sans MS", Font.BOLD, 15));
        
         String nombre2 = jugador2.getNombre();
        
@@ -102,23 +102,23 @@ public class VistaJuego extends JFrame{
         lblNombreJugador2 = new JLabel(nombre2);
         lblNombreJugador2.setBounds(500, 25, 100,100);
         lblNombreJugador2.setForeground(Color.GRAY);
-        lblNombreJugador2.setFont(new Font("arial", Font.BOLD, 18));
+        lblNombreJugador2.setFont(new Font ("Comic Sans MS", Font.BOLD, 15));
        
        
         //Numero de partidas disponible
         lblNumeroPartidas = new JLabel("Partida: " + LogicaJuego.numeroPartidas);
         lblNumeroPartidas.setBounds(250,0,100,100);
-        lblNumeroPartidas.setFont(new Font("Agency FB", Font.BOLD, 20));
+        lblNumeroPartidas.setFont(new Font ("Comic Sans MS", Font.BOLD, 16));
        
        
         // Partidas ganadas
         lblPartidasGanadas1 = new JLabel("Ganadas: " + LogicaJuego.partidasGanadas1);
         lblPartidasGanadas1.setBounds(0,70,100,100);
-        lblPartidasGanadas1.setFont(new Font("Agency FB", Font.BOLD, 20));
+        lblPartidasGanadas1.setFont(new Font ("Comic Sans MS", Font.BOLD, 15));
        
         lblPartidasGanadas2 = new JLabel("Ganadas: " + LogicaJuego.partidasGanadas2);
         lblPartidasGanadas2.setBounds(500,70,100,100);
-        lblPartidasGanadas2.setFont(new Font("Agency FB", Font.BOLD, 20));
+        lblPartidasGanadas2.setFont(new Font ("Comic Sans MS", Font.BOLD, 15));
        
        
         jpLabels.setLayout(null);
