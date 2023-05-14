@@ -22,17 +22,19 @@ public class LogicaJuego {
     public static int partidasGanadas1 = 0;
     public static int partidasGanadas2 = 0;
     public static int ultimoJugador;
+   
+    
     
     public LogicaJuego(JButton[][] botones){
         this.botones = botones;
         this.ultimoJugador = 0;
     }
     
-    
-    
+
     public boolean verificar(JButton[][] botones){
         
         //Verifica las filas
+        
         for(int i = 0; i < 3; i++){
             if(botones[i][0].getText().equals(botones[i][1].getText()) && botones[i][0].getText().equals(botones[i][2].getText()) && !botones[i][0].getText().equals("")){
                 ganar = true;
@@ -55,8 +57,11 @@ public class LogicaJuego {
             ganar = true;
         }
         
+        
         return ganar;
+        
     }
+    
     
     public boolean empate(JButton[][] botones){
         
@@ -76,12 +81,7 @@ public class LogicaJuego {
         ganar = false;
         ultimoJugador = 0;
     }
-    public void reseteoTotal(){
-       numeroPartidas = 0;
-       jugadores = 0;
-       partidasGanadas1 = 0;
-       partidasGanadas2 = 0;
-    }
+    
     
     public void cpu(JButton[][] botones){
         
@@ -106,6 +106,11 @@ public class LogicaJuego {
                             ultimoJugador = 1;
                             turno--;
                             
+                            if(verificar(botones)){
+                            ultimoJugador = 0;
+                            break outer;
+                        }
+                            
                             return;
                             
                         }else if(columnaBoton.getText().equals("X")){
@@ -125,6 +130,7 @@ public class LogicaJuego {
             }
            
            ultimoJugador = 0;
+           
         }
         
     }
@@ -143,44 +149,5 @@ public class LogicaJuego {
         return false;
     }
     
-    /*public class ManejadorEventoKey implements KeyListener{
-        
-        private int filaActual = 0;
-        private int columnaActual = 0;
-        
-        
-        @Override
-        public void keyTyped(KeyEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-            int codigo = e.getKeyCode();
-            if(codigo == KeyEvent.VK_UP && filaActual > 0){
-                filaActual --;
-                System.out.println("Hola");
-            }
-            
-            else if(codigo == KeyEvent.VK_DOWN && filaActual < 2){
-                filaActual ++;
-            }
-            
-            else if(codigo == KeyEvent.VK_LEFT && columnaActual > 0){
-                columnaActual --;
-            }
-            
-            else if(codigo == KeyEvent.VK_LEFT && columnaActual < 2){
-                columnaActual ++;
-            }
-            
-            botones[filaActual][columnaActual].requestFocus();
-
-        }
-
-        @Override
-        public void keyReleased(KeyEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-    }*/
+    
 }

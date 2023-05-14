@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -37,6 +39,7 @@ public class VistaJuego extends JFrame{
     private JLabel lblNumeroPartidas;
     private JButton[][] botones;
     private JPanel jpContenido;
+    private JButton btnTerminar;
     private LogicaJugador jugador1;
     private LogicaJugador jugador2;
     private LogicaJuego logicaJuego;
@@ -72,6 +75,14 @@ public class VistaJuego extends JFrame{
         JPanel jpLabels = new JPanel();
         jpLabels.setOpaque(false);
        
+        btnTerminar = new JButton("TERMINAR");
+        btnTerminar.setBounds(213,100,150,50);
+        btnTerminar.setFont(new Font("Comic Sans MS",Font.BOLD,15));
+        btnTerminar.setForeground(Color.BLACK);
+        btnTerminar.setOpaque(false);
+        btnTerminar.setContentAreaFilled(false);
+        btnTerminar.setBorder(bordePersonalizado);
+        btnTerminar.setFocusable(false);
         /*
         * Nombre de los jugadores
         */
@@ -129,6 +140,7 @@ public class VistaJuego extends JFrame{
         jpLabels.add(lblJugador2);
         jpLabels.add(lblNombreJugador2);
         jpLabels.add(lblNumeroPartidas);
+        jpLabels.add(btnTerminar);
         jpLabels.add(lblPartidasGanadas1);
         jpLabels.add(lblPartidasGanadas2);
         jpLabels.add(jpFondo);
@@ -142,7 +154,22 @@ public class VistaJuego extends JFrame{
         /*
         * Configuracion de la matriz en la vista y funcionalidades
         */
-       
+        btnTerminar.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int respuesta;
+
+                respuesta = JOptionPane.showConfirmDialog(
+                            null,"¿Quieres terminar el juego?", "Advertencia",
+                            JOptionPane.YES_NO_OPTION, 
+                            JOptionPane.WARNING_MESSAGE);
+                if(respuesta == JOptionPane.YES_OPTION){
+                    VistaEstadistica vistaEstadisticas = new VistaEstadistica(jugador1, jugador2);
+                    dispose();
+                }
+            }
+
+        });
         //Agrega los botones
         botones = new JButton[3][3];
         for (int i = 0; i < botones.length; i++) {
@@ -158,12 +185,12 @@ public class VistaJuego extends JFrame{
                 botones[i][j].addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent e){
                         JButton botonPresionado = (JButton) e.getSource();
-                        System.out.println(LogicaJuego.turno);
                         // Jugador 1, el jugador utiliza el boton Izquiedo del mouse para jugar
                         if(e.getButton() == MouseEvent.BUTTON1 && LogicaJuego.turno == 1 && botonPresionado.isEnabled()){
                            
                             botonPresionado.setText("X");
                             botonPresionado.setEnabled(false);
+                            botonPresionado.setFocusable(false);
                             botonPresionado.setFont(new Font ("Agency FB", Font.BOLD, 35));
                            
                             LogicaJuego.ultimoJugador = 0;
@@ -185,16 +212,26 @@ public class VistaJuego extends JFrame{
                                
                                 String nombreJugador = jugador1.getNombre();
                                 String ganador = LogicaJuego.ultimoJugador == 0 ? nombreJugador : "CPU";
-                               
+                                
                                 JOptionPane.showMessageDialog(null, "El jugador " + ganador +" ha ganado",
                                         "Informacion", JOptionPane.INFORMATION_MESSAGE);
                                 logicaJuego.reseteoTriqui(botones);
+                                switch(ganador){
+                                    case "CPU":
+                                        LogicaJuego.numeroPartidas--;
+                                        LogicaJuego.partidasGanadas2++;
+                                        lblNumeroPartidas.setText("Partida: " + LogicaJuego.numeroPartidas);
+                                        lblPartidasGanadas2.setText("Ganadas: " + LogicaJuego.partidasGanadas2);
+                                        break;
+                                    default:
+                                        LogicaJuego.numeroPartidas--;
+                                        LogicaJuego.partidasGanadas1++;
+                                        lblNumeroPartidas.setText("Partida: " + LogicaJuego.numeroPartidas);
+                                        lblPartidasGanadas1.setText("Ganadas: " + LogicaJuego.partidasGanadas1);
+                                    break;  
+                                }
                                
-                                LogicaJuego.numeroPartidas--;
-                                LogicaJuego.partidasGanadas1++;
-                               
-                                lblNumeroPartidas.setText("Partida: " + LogicaJuego.numeroPartidas);
-                                lblPartidasGanadas1.setText("Ganadas: " + LogicaJuego.partidasGanadas1);
+                                
                                
                             }else{
                                 LogicaJuego.turno++;
@@ -203,7 +240,6 @@ public class VistaJuego extends JFrame{
                        
                         //Jugador 2, el jugador utiliza el boton Derecho del mouse o el teclado para jugar
                         if(e.getButton() == MouseEvent.BUTTON3 && LogicaJuego.turno == 2 && botonPresionado.isEnabled() && !LogicaJuego.jugandoContraCpu){
-                            System.out.println(LogicaJuego.turno + "Entra");
                             botonPresionado.setText("O");
                             botonPresionado.setEnabled(false);
                             botonPresionado.setFont(new Font ("Agency FB", Font.BOLD, 35));
@@ -301,12 +337,20 @@ public class VistaJuego extends JFrame{
                                         logicaJuego.reseteoTriqui(botones);
                                         botones[filaActual][columnaActual].setBorder(bordePersonalizado2);
 
+                                        switch(ganador){
+                                    case "CPU":
+                                        LogicaJuego.numeroPartidas--;
+                                        LogicaJuego.partidasGanadas2++;
+                                        lblNumeroPartidas.setText("Partida: " + LogicaJuego.numeroPartidas);
+                                        lblPartidasGanadas2.setText("Ganadas: " + LogicaJuego.partidasGanadas2);
+                                        break;
+                                    default:
                                         LogicaJuego.numeroPartidas--;
                                         LogicaJuego.partidasGanadas1++;
-                                       
-
                                         lblNumeroPartidas.setText("Partida: " + LogicaJuego.numeroPartidas);
                                         lblPartidasGanadas1.setText("Ganadas: " + LogicaJuego.partidasGanadas1);
+                                    break;  
+                                }
 
                                     }else{
                                         LogicaJuego.turno++;
@@ -346,7 +390,6 @@ public class VistaJuego extends JFrame{
    
     public void mostrarBotones(JButton[][] botones, int filas, int columnas){
         JPanel panel = new JPanel(new GridLayout(filas, columnas,5, 5));
-        
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
                 panel.add(botones[i][j]);

@@ -3,10 +3,14 @@ package Vistas;
 
 import Logica.LogicaJuego;
 import Logica.LogicaJugador;
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -16,7 +20,6 @@ import javax.swing.JPanel;
 public class VistaEstadistica extends JFrame{
     
     private Fondo jpFondo;
-    private JLabel lblTitulo;
     private JLabel lblNombreJugador1;
     private JLabel lblNombreJugador2;
     private JLabel lblPartidasGanadas1;
@@ -90,15 +93,62 @@ public class VistaEstadistica extends JFrame{
         lblPartidasGanadas2.setBounds(300, 200, 200,200);
         lblPartidasGanadas2.setFont(new Font ("Comic Sans MS", Font.BOLD, 15));
         
+        btnJugarDeNuevo = new JButton("Volver a Jugar");
+        btnJugarDeNuevo.setBounds(90,400, 150,50);
+        btnJugarDeNuevo.setFont(new Font("Comic Sans MS",Font.BOLD,15));
+        btnJugarDeNuevo.setForeground(Color.BLACK);
+        btnJugarDeNuevo.setOpaque(false);
+        btnJugarDeNuevo.setContentAreaFilled(false);
+        btnJugarDeNuevo.setFocusable(false);
+
+        btnFinalizar = new JButton("Salir");
+        btnFinalizar.setBounds(265,400, 150,50);
+        btnFinalizar.setFont(new Font("Comic Sans MS",Font.BOLD,15));
+        btnFinalizar.setForeground(Color.BLACK);
+        btnFinalizar.setOpaque(false);
+        btnFinalizar.setContentAreaFilled(false);
+        btnFinalizar.setFocusable(false);
+        
         
         
         jpContenido.setLayout(null);
         jpContenido.setSize(500, 500);
         
+        jpContenido.add(btnJugarDeNuevo);
+        jpContenido.add(btnFinalizar);
         jpContenido.add(lblNombreJugador1);
         jpContenido.add(lblPartidasGanadas1);
         jpContenido.add(lblNombreJugador2);
         jpContenido.add(lblPartidasGanadas2);
         jpContenido.add(jpFondo);
+
+        ActionListener VolverJugar;
+        VolverJugar = new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                LogicaJuego.partidasGanadas1 = 0 ;
+                LogicaJuego.partidasGanadas2 = 0 ;
+                VistaInicio Vistainicio = new VistaInicio();
+                dispose();
+            }
+        };
+        
+        btnJugarDeNuevo.addActionListener(VolverJugar);
+        
+        ActionListener Salir = new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int respuesta;
+
+                respuesta = JOptionPane.showConfirmDialog(
+                            null,"¿Quieres terminar el juego?", "Advertencia",
+                            JOptionPane.YES_NO_OPTION, 
+                            JOptionPane.WARNING_MESSAGE);
+                if(respuesta == JOptionPane.YES_OPTION){
+                    dispose();
+                }
+            }       
+        };
+        btnFinalizar.addActionListener(Salir);
     }
 }
