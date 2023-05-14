@@ -85,6 +85,7 @@ public class VistaInicio extends JFrame{
         ActionListener instrucciones = new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
+                VistaInstrucciones vistainstrucciones= new VistaInstrucciones();
                 dispose();
             }       
         };

@@ -106,10 +106,6 @@ public class LogicaJuego {
                             ultimoJugador = 1;
                             turno--;
                             
-                            if(verificar(botones)){
-                            ultimoJugador = 0;
-                            break outer;
-                        }
                             
                             return;
                             
@@ -130,7 +126,9 @@ public class LogicaJuego {
             }
            
            ultimoJugador = 0;
-           
+           if(verificar(botones)){
+            ultimoJugador = 0;
+        }
         }
         
     }
