@@ -40,13 +40,13 @@ public class VistaInstrucciones extends JFrame{
         jpFondo.setSize(655,630);
         add(jpContenido);
         
-        lblTexto = new JLabel("<html><body>Instrucciones: <br> aqui van las instrucciiones <br>Gracias por leer, Exitos en el juego  </body></html>");
+        lblTexto = new JLabel("<html><body>Instrucciones: <br> El objetivo de Tic Tac Toe es conseguir tres en una fila o en diagonal. Juegas en un tablero de tres por tres. El primer jugador se conoce como X y el segundo es O(en este caso cpu o el nombre del jugador 2). Los jugadores alternan colocando X y Os en el tablero de juego hasta que el oponente tenga tres en una fila o se llenen los nueve cuadrados. para jugar, el jugador uno que es quien juega con la x, puede marcarla con el click izquierdo del mouse y tambien puede moverse con las flechas y marcando con la tecla ENTER, en cambio si hay dos jugadores, el jugador numero dos marcara solamente con el click derecho mouse   <br>Gracias por leer, Exitos en el juego  </body></html>");
         lblTexto.setBounds(50,50,550,420);
-        lblTexto.setFont(new Font("Comic Sans MS",Font.BOLD,25));
+        lblTexto.setFont(new Font("Comic Sans MS",Font.BOLD,20));
         lblTexto.setHorizontalAlignment(JLabel.LEFT);
         
         btnJugar = new JButton("Jugar");
-        btnJugar.setBounds(90,400, 150,50);
+        btnJugar.setBounds(90,470, 150,50);
         btnJugar.setFont(new Font("Comic Sans MS",Font.BOLD,25));
         btnJugar.setForeground(Color.BLACK);
         btnJugar.setOpaque(false);
@@ -54,7 +54,7 @@ public class VistaInstrucciones extends JFrame{
         btnJugar.setFocusable(false);
 
         btnVolver = new JButton("Salir");
-        btnVolver.setBounds(265,400, 150,50);
+        btnVolver.setBounds(265,470, 150,50);
         btnVolver.setFont(new Font("Comic Sans MS",Font.BOLD,25));
         btnVolver.setForeground(Color.BLACK);
         btnVolver.setOpaque(false);
